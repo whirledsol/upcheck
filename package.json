@@ -1,0 +1,31 @@
+{
+  "name": "upcheck",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whirledsol/upcheck.git"
+  },
+  "keywords": [
+    "website",
+    "uptime",
+    "alert",
+    "node"
+  ],
+  "type": "module",
+  "author": "whirledsol",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/whirledsol/upcheck/issues"
+  },
+  "homepage": "https://github.com/whirledsol/upcheck#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.6.1",
+    "axios": "^0.26.0",
+    "handlebars": "^4.7.7"
+  }
+}
