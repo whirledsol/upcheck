@@ -45,12 +45,16 @@ const ping = async(url) =>{
  * @param {*} url 
  */
 const check = async (site,url) =>{
-	let metadata = {
+	
+	const status = await ping(url);
+	
+	const metadata = {
 		site: site,
 		url: url,
-		now: Date.now()
+		now: Date.now(),
+		status: status
 	};
-	const status = await ping(url);
+
 	if(status !== 200){
 		await sendEmail(metadata);
 	}
