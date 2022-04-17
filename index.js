@@ -1,7 +1,9 @@
+import 'dotenv/config';
 import sgMail from '@sendgrid/mail';
-import * as config from 'config.js';
+import * as config from './config.js';
 import Handlebars from 'handlebars';
 import axios from 'axios';
+import moment from 'moment';
 
 const {SITES, EMAIL} = config;
 const {TO,FROM,SUBJECT_TEMPLATE,BODY_TEMPLATE} = EMAIL;
@@ -12,8 +14,9 @@ const {TO,FROM,SUBJECT_TEMPLATE,BODY_TEMPLATE} = EMAIL;
  * @param {*} metadata 
  */
 const sendEmail = async (metadata)=>{
-	const subject = Handlebars.compile(SUBJECT_TEMPLATE,metadata);
-	const body = Handlebars.compile(BODY_TEMPLATE,metadata);
+	const subject = Handlebars.compile(SUBJECT_TEMPLATE)(metadata);
+	const body = Handlebars.compile(BODY_TEMPLATE)(metadata);
+	console.log(subject,body)
 	const msg = {
 	  to: TO, // Change to your recipient
 	  from: FROM, // Change to your verified sender
@@ -21,6 +24,8 @@ const sendEmail = async (metadata)=>{
 	  text: body,
 	  html: `<p>${body}</p>`,
 	}
+	console.log('about to send email',process.env.SENDGRID_API_KEY)
+	sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 	await sgMail.send(msg)
 	console.log('\tEmail sent');
 }
@@ -35,7 +40,7 @@ const ping = async(url) =>{
 		return res.status;
 	}
 	catch(ex){
-		return ex.response.status;
+		return ex.response?.status ?? 0;
 	}
 }
 
@@ -51,7 +56,7 @@ const check = async (site,url) =>{
 	const metadata = {
 		site: site,
 		url: url,
-		now: Date.now(),
+		now: moment().format('MMMM Do YYYY, h:mm:ss a'),
 		status: status
 	};
 

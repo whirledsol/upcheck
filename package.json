@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/whirledsol/upcheck#readme",
   "dependencies": {
-    "@sendgrid/mail": "^7.6.1",
-    "axios": "^0.26.0",
-    "handlebars": "^4.7.7"
+    "@sendgrid/mail": "^7.6.2",
+    "axios": "^0.26.1",
+    "handlebars": "^4.7.7",
+    "dotenv":"^16.0.0",
+    "moment":"^2.29.3"
   }
 }
