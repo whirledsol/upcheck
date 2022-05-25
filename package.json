@@ -26,8 +26,9 @@
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "handlebars": "^4.7.7",
-    "dotenv":"^16.0.0",
-    "moment":"^2.29.3"
+    "moment": "^2.29.3",
+    "nodemailer": "^6.7.5"
   }
 }

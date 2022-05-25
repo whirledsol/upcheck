@@ -4,8 +4,17 @@ export const SITES = {
 };
 
 export const EMAIL = {
-	TO: 'to@example.com',
-	FROM: 'from@example.com',
-	SUBJECT: `UPCHECK: {{site}} returned {{status}}`,
-	body: `{{site}} at {{url}} returned {{status}} at {{now}}`
+	to: 'to@example.com',
+	from: 'from@example.com',
+	subjectTemplate: `UPCHECK: {{site}} returned {{status}}`,
+	bodyTemplate: `{{site}} at {{url}} returned {{status}} at {{now}}`,
+	emailSetup: {
+		host: "smtp.ethereal.email",
+		port: 587,
+		secure: false, // true for 465, false for other ports
+		auth: {
+			user: testAccount.user, // generated ethereal user
+			pass: testAccount.pass, // generated ethereal password
+		},
+	}
 };
